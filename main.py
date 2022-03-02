@@ -1,7 +1,5 @@
 from flask import *
-from datetime import datetime, timedelta
-import json, time
-import pytest
+import json
 from meteofrance_api import MeteoFranceClient
 
 app = Flask(__name__)
