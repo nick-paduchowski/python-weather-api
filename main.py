@@ -10,7 +10,7 @@ client = MeteoFranceClient()
 
 @app.route('/', methods=['GET'])
 def request_page1():
-    data_set = {'API Home ': 'Welcome to the Maesos Weather API'}
+    data_set = {'API Home ': 'Welcome to Nick Paduchowskis Weather API'}
 
     jsonData = json.dumps(data_set)
 
