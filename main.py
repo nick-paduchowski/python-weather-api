@@ -22,12 +22,21 @@ def request_page():
 
     forecast = client.get_forecast(latitude,longitude,language="en")
 
-    current_forecast = forecast.current_forecast
     hourly_forecast = forecast.forecast
+    hourlyArray = []
+
+    for hour in hourly_forecast:
+        hourlyArray.append({'time': hour['dt'],
+                            'temp': hour['T']['value'],
+                            'feelslike': hour['T']['windchill'],
+                            'rain': hour['rain']['6h'],
+                            'humidity': hour['humidity'],
+                            'windspeed': hour['wind']['speed']
+                            })
+
 
     data_set = {
-        'current': current_forecast,
-        'hourly': hourly_forecast
+        'hourly': hourlyArray
     }
     jsonData = json.dumps(data_set)
 
