@@ -9,7 +9,7 @@ client = MeteoFranceClient()
 
 @app.route('/', methods=['GET'])
 def request_page1():
-    data_set = {'API Home ': 'Welcome to Nick Paduchowskis Weather API'}
+    data_set = {'API Home ': 'Welcome to The Weather API'}
 
     jsonData = json.dumps(data_set)
 
@@ -60,7 +60,8 @@ def request_page2():
             'temp': current_forecast['T']['value'],
             'feelslike': current_forecast['T']['windchill'],
             'humidity': current_forecast['humidity'],
-            'dewPoint': current_forecast['T']['value'] - ((100 - current_forecast['humidity']) / 5)
+            'dewPoint': current_forecast['T']['value'] - ((100 - current_forecast['humidity']) / 5),
+            'desc': daily_forecast[0]['weather12H']['desc']
         },
         #'dailyForecast': daily_forecast,
         'dailyForecast': {
